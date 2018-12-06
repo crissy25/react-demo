@@ -12,3 +12,9 @@ code {
   font-family: source-code-pro, Menlo, Monaco, Consolas, "Courier New",
     monospace;
 }
+.gif_player img {
+  width: 400px;
+  margin: auto;
+  padding-left: 20px;
+  border-color: blue;
+}

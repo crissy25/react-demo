@@ -47,7 +47,7 @@ class Container extends Component {
 
   render () {
     return (
-      <div style={{backgroundColor: 'rgba(154, 178, 151, 0.35)', height: '-webkit-fill-available'}}>
+      <div style={{backgroundColor: 'rgba(103, 103, 103, 0.35)', height: '-webkit-fill-available'}}>
         <MuiThemeProvider>
           <div>
             <Header updateTab={this.updateTab} />
