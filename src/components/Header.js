@@ -6,6 +6,7 @@ class Header extends Component {
     return (
       <div>
         <AppBar
+          style={{backgroundColor: 'rgba(70, 123, 0, 1)'}}
           showMenuIconButton={false}
           title='Application Name'
           iconElementRight={<MenuOptions updateTab={this.props.updateTab} />} />

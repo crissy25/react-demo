@@ -15,12 +15,13 @@ class Container extends Component {
 
   componentDidMount () {
     setInterval(() => {
-      var randomBoolean = Math.random() < 0.2
-      if (randomBoolean) this.setState({showNotification: true})
-    }, 1000)
-  //   fetch('https://jsonplaceholder.typicode.com/todos/1')
-  //   .then(response => console.log(response.json()))
-  //   .then(json => console.log(json))
+      fetch('https://safe-headland-89439.herokuapp.com/tree-in-danger',
+        {method: 'GET', credentials: 'same-origin', headers: {'Content-Type': 'application/json; charset=utf-8'}})
+      .then(response => response.json().then((data) => {
+        if (data.treeInDanger) this.setState({showNotification: true})
+      }))
+
+    }, 10000)
   }
 
   updateTab (value) {
@@ -29,7 +30,7 @@ class Container extends Component {
 
   render () {
     return (
-      <div>
+      <div style={{backgroundColor: 'rgba(154, 178, 151, 0.35)', height: '-webkit-fill-available'}}>
         <MuiThemeProvider>
           <div>
             <Header updateTab={this.updateTab} />

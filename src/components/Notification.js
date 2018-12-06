@@ -1,24 +1,25 @@
 import React, { Component } from 'react'
 import Paper from 'material-ui/Paper'
 const style = {
-  height: 65,
+  height: 55,
   width: '97%',
   marginTop: 20,
   textAlign: 'center',
   display: 'block',
   marginLeft: 'auto',
   marginRight: 'auto',
-  backgroundColor: 'rgba(200,0,0,1)'
+  backgroundColor: 'rgba(200,0,0,1)',
+  borderRadius: 4
 }
 const style2 = {
   color: 'white',
-  paddingTop: 23
+  paddingTop: 20
 }
 class Notification extends Component {
   render () {
     return (
       <div>
-        <Paper style={style} zDepth={3} rounded={false}>
+        <Paper style={style} zDepth={3} rounded>
           <div style={style2}><i className='fa fa-warning' style={{paddingRight: 5}} />Warning! Some movement has been detected!</div>
         </Paper>
       </div>
