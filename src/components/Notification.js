@@ -15,13 +15,22 @@ const style2 = {
   color: 'white',
   paddingTop: 20
 }
+
 class Notification extends Component {
   render () {
     return (
       <div>
-        <Paper style={style} zDepth={3} rounded>
-          <div style={style2}><i className='fa fa-warning' style={{paddingRight: 5}} />Warning! Some movement has been detected!</div>
-        </Paper>
+        {
+              this.props.notifications.map((treeId) => {
+                return (
+                  <Paper style={style} zDepth={3} rounded>
+                    <div style={style2}><i className='fa fa-warning' style={{paddingRight: 5}} />
+                            Warning! Some movement has been detected on {treeId} !
+                        </div>
+                  </Paper>
+                )
+              })
+          }
       </div>
     )
   }

@@ -3,25 +3,42 @@ import Header from './Header'
 import Content from './Content'
 import Notification from './Notification'
 import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
+
+const treeIds = []
+for (var a = 1; a <= 15; a++) {
+  treeIds.push(1100 + a)
+}
+
+function onlyUnique (value, index, self) {
+  return self.indexOf(value) === index
+}
+
 class Container extends Component {
   constructor (props) {
     super(props)
     this.state = {
       currentTab: 'Home',
-      showNotification: false
+      showNotification: []
     }
     this.updateTab = this.updateTab.bind(this)
   }
 
   componentDidMount () {
     setInterval(() => {
-      fetch('https://safe-headland-89439.herokuapp.com/tree-in-danger',
-        {method: 'GET', credentials: 'same-origin', headers: {'Content-Type': 'application/json; charset=utf-8'}})
-      .then(response => response.json().then((data) => {
-        if (data.treeInDanger) this.setState({showNotification: true})
-      }))
-
-    }, 10000)
+      for (let i = 0; i < treeIds.length; i++) {
+        fetch('https://safe-headland-89439.herokuapp.com/tree-in-danger?treeId=' + treeIds[i],
+        {method: 'GET', mode: 'cors', credentials: 'same-origin', headers: {'Content-Type': 'application/json; charset=utf-8'}})
+        .then(response => response.json().then((data) => {
+          if (data.treeInDanger) {
+            this.setState((state) => {
+              state.showNotification.push(treeIds[i])
+              state.showNotification = state.showNotification.filter(onlyUnique)
+              return state
+            })
+          }
+        }))
+      }
+    }, 1000)
   }
 
   updateTab (value) {
@@ -34,7 +51,7 @@ class Container extends Component {
         <MuiThemeProvider>
           <div>
             <Header updateTab={this.updateTab} />
-            {this.state.showNotification && <Notification />}
+            <Notification notifications={this.state.showNotification} />
             <Content currentTab={this.state.currentTab} />
           </div>
         </MuiThemeProvider>
