@@ -6,7 +6,7 @@ class Header extends Component {
     return (
       <div>
         <AppBar
-          style={{backgroundColor: 'rgb(87, 87, 87)'}}
+          style={{backgroundColor: 'rgb(27, 71, 25)'}}
           showMenuIconButton={false}
           title='Monitoring High-Valued Trees'
           // iconElementRight={<MenuOptions updateTab={this.props.updateTab} />}

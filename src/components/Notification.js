@@ -21,8 +21,8 @@ class Notification extends Component {
   render () {
     return (
       <div style={{display: 'flex', width: '100%', margin: 'auto'}}>
-        <div><GifPlayer gif='/tenor.gif' autoplay /></div>
-        <div style={{width: '50%', margin: 'auto', maxHeight: '300px', overflowY: 'auto'}}>
+        {/* <div><GifPlayer gif='/tenor.gif' autoplay /></div> */}
+        <div style={{width: '100%', margin: 'auto', maxHeight: '300px', overflowY: 'auto'}}>
           {
             this.props.notifications.map((treeId) => {
               return (

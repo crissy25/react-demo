@@ -6,7 +6,7 @@ import MuiThemeProvider from 'material-ui/styles/MuiThemeProvider'
 
 const treeIds = []
 for (var a = 1; a <= 15; a++) {
-  treeIds.push(1100 + a)
+  treeIds.push(3210 + a)
 }
 
 function onlyUnique (value, index, self) {
@@ -47,11 +47,11 @@ class Container extends Component {
 
   render () {
     return (
-      <div style={{backgroundColor: 'rgba(103, 103, 103, 0.35)', height: '-webkit-fill-available'}}>
+      <div style={{backgroundColor: 'rgba(75, 124, 87, 0.35)', height: '-webkit-fill-available'}}>
         <MuiThemeProvider>
           <div>
             <Header updateTab={this.updateTab} />
-            <Notification notifications={this.state.showNotification} />
+            {this.state.showNotification.length !== 0 && <Notification notifications={this.state.showNotification} />}
             <Content currentTab={this.state.currentTab} />
           </div>
         </MuiThemeProvider>
